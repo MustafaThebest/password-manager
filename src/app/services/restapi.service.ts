@@ -7,7 +7,13 @@ import { Injectable } from '@angular/core';
 export class RestapiService {
 
   constructor(private http:HttpClient) { }
+  
   GetPasswords() {
     return this.http.get("http://localhost:3000/passwords");
+  }
+
+  SetPassword()
+  {
+    //this.http.post()
   }
 }
