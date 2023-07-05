@@ -8,15 +8,21 @@ import { AppComponent } from './app.component';
 import { PasswordsListComponent } from './passwords-list/passwords-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AddPasswordComponent } from './add-password/add-password.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PasswordsListComponent
+    PasswordsListComponent,
+    AddPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,11 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
