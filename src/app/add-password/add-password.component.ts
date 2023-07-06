@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-password',
@@ -12,4 +10,16 @@ import {FormsModule} from '@angular/forms';
 
 export class AddPasswordComponent {
   hide = true;
+  
+  profileForm = new FormGroup({
+    category: new FormControl(''),
+    app: new FormControl(''),
+    userName: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+
+  OnSubmit(){
+    console.warn(this.profileForm.value);
+  }
 }
