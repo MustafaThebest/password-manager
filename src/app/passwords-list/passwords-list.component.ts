@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 
 export class PasswordsListComponent {
 
+  hide = true;
+
   constructor(private router: Router, private restapiService: RestapiService, private dataService: DataService ) { }
 
   ngOnInit(): void { 
@@ -23,6 +25,12 @@ export class PasswordsListComponent {
   GetPasswords() {
     this.restapiService.GetPasswords().subscribe(data => {
       this.passwords = data;
+
+      //decoding passwords
+      this.passwords.forEach(element => {
+        element.encryptedPassword = atob(element.encryptedPassword);
+      }); 
+
       //console.log(this.passwords);
     });
   }
