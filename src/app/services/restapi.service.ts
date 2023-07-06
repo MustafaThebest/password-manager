@@ -27,6 +27,13 @@ export class RestapiService {
     return this.http.post<IPassword>(this.url, { category: data.category, app: data.app, userName: data.userName, encryptedPassword: btoa(data.password)});
   }
 
+  PutPassword(id: number, data: any)
+  {
+    const temp = this.url + `/${id}`;
+    console.log(temp);
+    return this.http.put<IPassword>(temp, {category: data.category, app: data.app, userName: data.userName, encryptedPassword: btoa(data.password)});
+  }
+
   DeletePassword(id: number)
   {
     const temp = this.url + `/${id}`;

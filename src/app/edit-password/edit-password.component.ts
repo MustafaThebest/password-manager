@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { RestapiService } from '../services/restapi.service';
-import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
 import { IPassword } from '../interfaces/IPassword'
 
 @Component({
@@ -12,33 +13,41 @@ import { IPassword } from '../interfaces/IPassword'
 export class EditPasswordComponent {
   hide = true;
 
-  constructor(private router: ActivatedRoute, private restapiService: RestapiService) { };
+  constructor(private router: Router, private restapiService: RestapiService, private dataService: DataService) { };
 
   id: number = 0;
   password: IPassword = {} as IPassword;
 
-  ngOnInit() {
-    this.id = this.router.snapshot.params['id'];
-    this.restapiService.GetPassword(this.id).subscribe((result) => {
-      this.password = result; // Assign the result to the password variable
-    });
-  }
-
-  profileForm = new FormGroup({
+  profileForm: FormGroup = new FormGroup({
     category: new FormControl(this.password.category),
     app: new FormControl(this.password.app),
     userName: new FormControl(this.password.userName),
-    password: new FormControl(atob(this.password.encryptedPassword)),
+    password: new FormControl(this.password.encryptedPassword),
   });
 
+  ngOnInit() {
+    this.dataService.currentId.subscribe(id => {
+      this.id = id;
+    });
+    this.restapiService.GetPassword(this.id).subscribe((data) => {
+      this.password = data;
+
+      this.profileForm.setValue({
+        category: this.password.category,
+        app: this.password.app,
+        userName: this.password.userName,
+        password: atob(this.password.encryptedPassword)
+      })
+
+    });
+  }
+
+
   OnSubmit() {
-    console.warn(this.profileForm.value);
-
     //SUBMIT CHANGES
-
-    // this.restapiService.AddPassword(this.profileForm.value).subscribe((result)=> { 
-    //   console.warn(result);
-    //   this.router.navigateByUrl('/passwords-list');
-    // })
+    this.restapiService.PutPassword(this.password.id, this.profileForm.value).subscribe((result)=> { 
+      console.warn(result);
+      this.router.navigateByUrl('/passwords-list');
+    })
   }
 }
