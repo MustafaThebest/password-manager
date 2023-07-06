@@ -50,5 +50,5 @@ export class PasswordsListComponent {
     });
   }
 
-  displayedColumns: string[] = ['id', 'category', 'app', 'userName', 'password', 'actions'];
+  displayedColumns: string[] = ['app'];
 }
