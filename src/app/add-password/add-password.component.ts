@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { RestapiService } from '../services/restapi.service';
 
 @Component({
   selector: 'app-add-password',
@@ -9,8 +10,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 
 export class AddPasswordComponent {
-  hide = true;
   
+  constructor(private restapiService: RestapiService) {};
+  
+  hide = true;
+
   profileForm = new FormGroup({
     category: new FormControl(''),
     app: new FormControl(''),
@@ -18,8 +22,10 @@ export class AddPasswordComponent {
     password: new FormControl(''),
   });
 
-
   OnSubmit(){
     console.warn(this.profileForm.value);
+    this.restapiService.AddPassword(this.profileForm.value).subscribe((result)=> { 
+      console.warn(result)
+    })
   }
 }

@@ -1,20 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Password } from '../interfaces/password'
+import { IPassword } from '../interfaces/IPassword'
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestapiService {
 
+  url = "http://localhost:3000/passwords";
+
   constructor(private http:HttpClient) { }
   
   GetPasswords() {
-    return this.http.get("http://localhost:3000/passwords");
+    return this.http.get(this.url);
   }
 
-  AddPassword(password: Password)
+  AddPassword(data: any)
   {
-    //this.http.post<Password>('http://localhost:3000')
+    const passwordData: IPassword = { id: 3, category: data.category, app: data.app, userName: data.userName, encryptedPassword: btoa(data.password)};
+    return this.http.post<IPassword>(this.url, passwordData);
   }
 }
