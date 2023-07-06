@@ -12,7 +12,7 @@ export class RestapiService {
   constructor(private http:HttpClient) { }
   
   GetPasswords() {
-    return this.http.get(this.url);
+    return this.http.get<IPassword[]>(this.url);
   }
 
   AddPassword(data: any)

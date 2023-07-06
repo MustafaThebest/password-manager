@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RestapiService } from '../services/restapi.service';
+import { IPassword } from '../interfaces/IPassword';
 
 @Component({
   selector: 'app-passwords-list',
@@ -15,12 +16,12 @@ export class PasswordsListComponent {
     this.GetPasswords();
   }
 
-  passwordData: any;
+  passwords: IPassword[] = [];
 
   GetPasswords() {
-    this.restapiService.GetPasswords().subscribe(responce => {
-      this.passwordData = responce;
-      console.log(this.passwordData);
+    this.restapiService.GetPasswords().subscribe(data => {
+      this.passwords = data;
+      console.log(this.passwords);
     });
   }
 
