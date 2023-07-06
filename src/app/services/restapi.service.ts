@@ -17,7 +17,7 @@ export class RestapiService {
 
   AddPassword(data: any)
   {
-    const passwordData: IPassword = { id: 3, category: data.category, app: data.app, userName: data.userName, encryptedPassword: btoa(data.password)};
-    return this.http.post<IPassword>(this.url, passwordData);
+    //const passwordData: IPassword = { category: data.category, app: data.app, userName: data.userName, encryptedPassword: btoa(data.password)};
+    return this.http.post<IPassword>(this.url, { category: data.category, app: data.app, userName: data.userName, encryptedPassword: btoa(data.password)});
   }
 }
