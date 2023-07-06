@@ -21,7 +21,15 @@ export class PasswordsListComponent {
   GetPasswords() {
     this.restapiService.GetPasswords().subscribe(data => {
       this.passwords = data;
-      console.log(this.passwords);
+      //console.log(this.passwords);
+    });
+  }
+
+  DeletePassword(id: number)
+  {
+    console.log(id);
+    this.restapiService.DeletePassword(id).subscribe(() => {
+      this.passwords = this.passwords.filter(data => data.id !== id);
     });
   }
 

@@ -20,4 +20,11 @@ export class RestapiService {
     //const passwordData: IPassword = { category: data.category, app: data.app, userName: data.userName, encryptedPassword: btoa(data.password)};
     return this.http.post<IPassword>(this.url, { category: data.category, app: data.app, userName: data.userName, encryptedPassword: btoa(data.password)});
   }
+
+  DeletePassword(id: number)
+  {
+    const temp = this.url + `/${id}`;
+    console.log(temp);
+    return this.http.delete(temp);
+  }
 }
