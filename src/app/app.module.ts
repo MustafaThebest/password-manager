@@ -18,13 +18,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AddPasswordComponent } from './add-password/add-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PasswordsListComponent,
-    AddPasswordComponent
+    AddPasswordComponent,
+    EditPasswordComponent
   ],
   imports: [
     BrowserModule,
