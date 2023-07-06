@@ -2,16 +2,8 @@
 
 html,
 body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.full-page {
-    margin: 20px;
+    margin-right: 150px;
+    margin-left: 150px;
 }
 
 .example-form {
