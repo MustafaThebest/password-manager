@@ -10,7 +10,13 @@ export class RestapiService {
   url = "http://localhost:3000/passwords";
 
   constructor(private http:HttpClient) { }
-  
+
+  GetPassword(id: number)
+  {
+    const temp = this.url + `/${id}`;
+    return this.http.get<IPassword>(temp);
+  }
+
   GetPasswords() {
     return this.http.get<IPassword[]>(this.url);
   }

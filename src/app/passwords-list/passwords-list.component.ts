@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RestapiService } from '../services/restapi.service';
 import { IPassword } from '../interfaces/IPassword';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-passwords-list',
@@ -10,7 +11,7 @@ import { IPassword } from '../interfaces/IPassword';
 
 export class PasswordsListComponent {
 
-  constructor(private restapiService: RestapiService) { }
+  constructor(private router: Router, private restapiService: RestapiService) { }
 
   ngOnInit(): void { 
     this.GetPasswords();
@@ -23,6 +24,12 @@ export class PasswordsListComponent {
       this.passwords = data;
       //console.log(this.passwords);
     });
+  }
+
+  EditPassword(id: number)
+  {
+    console.log(id);
+    this.router.navigate(['/edit-password', id]);
   }
 
   DeletePassword(id: number)
