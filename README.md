@@ -1,3 +1,10 @@
+# Important Notes
+To begin the application, please execute the following commands:
+1) Run json-server -w src/app/passwords.json
+2) Run ng serve -o
+
+Make sure that the required Node packages are installed! (npm install)
+
 # PasswordManager
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
